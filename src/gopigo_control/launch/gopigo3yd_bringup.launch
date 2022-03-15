@@ -1,0 +1,12 @@
+<launch>
+  <!-- launch gopigo3   -->
+  <include file="$(find gopigo3_node)/launch/gopigo3.launch"/>
+  <!-- launch ydlidar   -->
+  <include file="$(find ydlidar)/launch/lidar.launch"/>
+
+  <!-- launch raspicam   -->
+  <include file="$(find raspicam_node)/launch/camerav2_1280x960_10fps.launch">
+	<arg name="enable_raw" value="true"/>
+	<arg name="camera_frame_id" value="base_scan"/>
+  </include>
+</launch>

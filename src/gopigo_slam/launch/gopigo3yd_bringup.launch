@@ -1,0 +1,16 @@
+<launch>
+  <!-- launch gopigo3   -->
+  <include file="$(find gopigo3_node)/launch/gopigo3.launch"/>
+  <!-- launch ydlidar   -->
+  <include file="$(find ydlidar)/launch/lidar.launch" />
+	<!-- params ydlidar equal to simulation -->
+
+    <!-- LIDAR zero angle correction 180º   -->
+    <node pkg="tf" type="static_transform_publisher" name="base_link_to_base_scan"
+        args="-0.03 0.01 0.15 3.1416  0.0 0.0   /base_link /base_scan 40" /> 
+  <!-- launch raspicam   -->
+  <!--<include file="$(find raspicam_node)/launch/camerav2_1280x960_10fps.launch">
+	<arg name="enable_raw" value="true"/>
+	<arg name="camera_frame_id" value="base_scan"/>
+  </include>-->
+</launch>

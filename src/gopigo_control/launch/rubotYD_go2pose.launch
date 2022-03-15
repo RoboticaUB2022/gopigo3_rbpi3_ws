@@ -1,0 +1,23 @@
+<launch>
+  <!-- launch gopigo3   -->
+  <include file="$(find gopigo3_node)/launch/gopigo3.launch"/>
+  <!-- launch ydlidar   -->
+  <include file="$(find ydlidar)/launch/lidar.launch"/>
+
+  <!-- launch raspicam   -->
+  <!--<include file="$(find raspicam_node)/launch/camerav2_1280x960_10fps.launch">
+	<arg name="enable_raw" value="true"/>
+	<arg name="camera_frame_id" value="base_scan"/>
+  </include>-->
+  <!-- run navigation program  -->
+    <arg name="x" default="0.4"/>
+    <arg name="y" default="0.4"/>
+    <arg name="f" default="-150"/>
+    <node pkg="gopigo_control" type="rubot_go2pose.py" name="rubot_control" output="screen" >
+      <param name="x" value="$(arg x)"/>
+      <param name="y" value="$(arg y)"/>
+      <param name="f" value="$(arg f)"/>
+    </node>
+  <!-- Show in Rviz   -->
+  <!--<node name="rviz" pkg="rviz" type="rviz" args="-d $(find gopigo_control)/rviz/laserscan.rviz"/>-->
+</launch>
