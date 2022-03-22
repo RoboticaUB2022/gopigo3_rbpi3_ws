@@ -10,7 +10,7 @@
 	<arg name="camera_frame_id" value="base_scan"/>
   </include>-->
   <!-- launch follow wall   -->
-	<arg name="LIDAR" default="rp" />
+	<arg name="LIDAR" default="RP" />
   <node name="wall_follow" pkg="gopigo_control" type="rubot_wall_follower_rg.py" output="screen" >
 	<param name="LIDAR" value="$(arg LIDAR)"/>
   </node>
